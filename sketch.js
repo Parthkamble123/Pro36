@@ -2,7 +2,7 @@ var dog,sadDog,happyDog, database;
 var foodS,foodStock;
 var addFood;
 var foodObj;
-var removeFoods;
+
 //create feed and lastFed variable here
 var feed;
 var lastFed;
@@ -31,9 +31,9 @@ function setup() {
   addFood.position(800,95);
   addFood.mousePressed(addFoods);
 
-  feed=createButton("Feed Dog");
+  feed=createButton("Feed dog");
   feed.position(700,95);
-  feed.mousePressed(removeFoods);
+  feed.mousePressed(feedDog);
 
 }
 
@@ -61,7 +61,11 @@ function feedDog(){
   dog.addImage(happyDog);
 
   //write code here to update food stock and last fed time
+  foodObj.updateFoodStock(foodObj.getFoodStock()-1);
+  database.ref('/').update({
+    Food:foodObj.getFoodStock(),
  
+  })
  
 }
 
